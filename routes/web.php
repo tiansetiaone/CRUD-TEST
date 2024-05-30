@@ -24,6 +24,8 @@ Route::get('/penjualan/{id}/edit',[PenjualanController::class,'edit']);
 Route::put('/penjualan/{id}',[PenjualanController::class,'update']);
 Route::delete('/penjualan/{id}',[PenjualanController::class,'destroy']);
 Route::get('/penjualan/search',[PenjualanController::class,'search']);
+Route::get('/penjualan/index-paging', [PenjualanController::class,'indexPaging']);
+Route::get('/penjualan/index-sorting', [PenjualanController::class,'indexSorting']);
 
 });
 

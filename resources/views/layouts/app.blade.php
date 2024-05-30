@@ -13,6 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
 
       <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,6 +28,53 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        .table-sortable>thead>tr>th.sort {
+    cursor: pointer;
+    position: relative;
+}
+
+.table-sortable>thead>tr>th.sort:after,
+.table-sortable>thead>tr>th.sort:after,
+.table-sortable>thead>tr>th.sort:after {
+    content: ' ';
+    position: absolute;
+    height: 0;
+    width: 0;
+    right: 10px;
+    top: 16px;
+}
+
+.table-sortable>thead>tr>th.sort:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ccc;
+    border-bottom: 0px solid transparent;
+}
+
+.table-sortable>thead>tr>th:hover:after {
+    border-top: 5px solid #888;
+}
+
+.table-sortable>thead>tr>th.sort.asc:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 0px solid transparent;
+    border-bottom: 5px solid #333;
+}
+
+.table-sortable>thead>tr>th.sort.asc:hover:after {
+    border-bottom: 5px solid #888;
+}
+
+.table-sortable>thead>tr>th.sort.desc:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    border-bottom: 5px solid transparent;
+}
+    </style>
 </head>
 <body>
     <div id="app">

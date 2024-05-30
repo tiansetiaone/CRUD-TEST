@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
+
+    // public $sortColumn = 'nama_barang';
+    // public $sortDirection = 'asc';
+
     public function index(){
         $dtlpenjualan = Dtlpenjualan::all();
         // $dtlpenjualan = Dtlpenjualan::sortable();
@@ -41,11 +45,31 @@ class PenjualanController extends Controller
 
     public function search(Request $request) {
         if($request->has('search')) {
-            $dtlpenjualan = Dtlpenjualan::where('nama_barang','LIKE','%'.$request->search.'%')->get();
+            $dtlpenjualan = Dtlpenjualan::where('nama_barang','LIKE','%'.$request->search.'%')
+            ->get();
         }
         else {
             $dtlpenjualan = Dtlpenjualan::all();
         }
         return view ('penjualan.index',['dtlpenjualan' => $dtlpenjualan]);
     }
+
+    // public function sort($columnName){
+    //     $this->sortColumn = $columnName;
+    //     $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
+    // }
+
+    public function indexPaging()
+{
+    $dtlpenjualan = Dtlpenjualan::paginate(5);
+
+    return view('penjualan.index-paging')->with('dtlpenjualan', $dtlpenjualan);
+}
+
+public function indexSorting()
+{
+    $dtlpenjualan = Dtlpenjualan::sortable()->paginate(5);
+
+    return view('penjualan.index-sorting')->with('dtlpenjualan', $dtlpenjualan);
+}
 }

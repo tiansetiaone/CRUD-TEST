@@ -9,10 +9,10 @@
                 <div class="card-body">
 <h1>DATA PENJUALAN BARANG</h1>
 
-<div class="card-tools" style="display: flex;">
+<div class="card-tools" style="display: flex; width:100%; justify-content: space-between;">
     <a class="btn btn-primary" href="/penjualan/create">Tambah Barang</a>
         <form action="/penjualan/search" class="form-inline" method="get">
-        <input type="search" name="search" class="form-control float-right" placeholder="Cari" style="margin-left:470px">
+        <input type="search" name="search" class="form-control float-right" placeholder="Cari">
 
         <div class="input-group-append">
             <button type="submit" class="btn btn-default">
@@ -22,22 +22,24 @@
     </form>
 </div>
 </br>
-<table class="table table-dark">
+<div class="overflow-scroll">
+<table class="table table-dark table-sortable" style="max-width: 100%">
     <thead>
         <tr>
         <th>No</th>
-        <th>Nama Barang</th>
+        <th>@sortablelink('nama_barang', 'Nama Barang')</th>
         <th>Stok</th>
         <th>Jumlah Terjual</th>
-        <th>Tanggal Transaksi</th>
+        <th>@sortablelink('tanggal_transaksi', "Tanggal Transaksi")</th>
         <th>Jenis Barang</th>
         <th>Aksi</th>
     </tr>
     </thead>
+    @php $no = 1; @endphp
     @foreach ($dtlpenjualan as $m)
     <tbody>
         <tr>
-            <td>{{ $m->id }}</td>
+            <td>{{ $no++ }}</td>
             <td>{{ $m->nama_barang }}</td>
             <td>{{ $m->stok }}</td>
             <td>{{ $m->jumlah_terjual }}</td>
@@ -57,6 +59,8 @@
     </tbody>
     @endforeach
 </table>
+</div>
+</div>
 </div>
 </div>
 </div>
